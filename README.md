@@ -22,7 +22,7 @@ Organized levels (most are playable, though, except for pack 4, which is a debug
 Level management (all levels are available, levels do not restart when lost).  
 Sounds.  
 Music.  
-Nice-loo.king graphics.  
+Nice-looking graphics.  
 Informative about screen.  
 Informative help screen.  
 Memory management.  

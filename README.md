@@ -11,19 +11,19 @@ A ball is the same color as the goal (open circle) it needs to reach.  A goal ca
 
 This is an incomplete version, so it lacks many features.  Here is what is has:
 
-Functional gameplay
-Assorted levels
-Rudimentary graphics
-Rudimentary main menu, help, about, settings, pack select, level select, and game screens
+Functional gameplay.  
+Assorted levels.  
+Rudimentary graphics.  
+Rudimentary main menu, help, about, settings, pack select, level select, and game screens.  
 
 Here is what is doesn't have:
 
-Organized levels (most are playable, though, except for pack 4, which is a debug pack.  Packs 9, 10, and 11 are the most organized)
-Level management (all levels are available, levels do not restart when lost)
-Sounds
-Music
-Nice-looking graphics
-Informative about screen
-Informative help screen
-Memory management
-Any sort of player progress or achievements
+Organized levels (most are playable, though, except for pack 4, which is a debug pack.  Packs 9, 10, and 11 are the most organized).  
+Level management (all levels are available, levels do not restart when lost).  
+Sounds.  
+Music.  
+Nice-loo.king graphics.  
+Informative about screen.  
+Informative help screen.  
+Memory management.  
+Any sort of player progress or achievements.  

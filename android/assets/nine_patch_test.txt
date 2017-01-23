@@ -1,0 +1,13 @@
+nine_patch_test.png
+size: 256, 256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+nine_patch
+  rotate: false
+  xy: 0, 0
+  size: 256, 256
+  split: 75, 75, 75, 75
+  orig: 256, 256
+  offset: 0, 0
+  index: -1

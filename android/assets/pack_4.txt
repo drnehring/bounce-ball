@@ -1,0 +1,18 @@
+05 03
+04 00
+00 02 12
+00 00 02 02|Basic,02 00 04 00 01|Fixed
+
+
+07 05
+06 04
+00 02 12
+00 00 02 02|Basic,02 00 04 00 01|Fixed,04 00 04 00 02|Fixed,06 00 04 02 03|Basic,06 02 00 00 02|Fixed
+
+
+05 05
+04 02
+01 02 00
+00 00 06 01|Basic True,02 00 08 01|Basic True,04 00 02 01|Basic True,00 02 04 01|Basic True,02 02 04 00 02|Spinning 03,00 04 02 01|Basic True,02 04 00 01|Basic True,04 04 06 01|Basic True
+
+

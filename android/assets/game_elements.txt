@@ -1,0 +1,761 @@
+game_elements.png
+size: 512, 512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow_blue
+  rotate: false
+  xy: 425, 475
+  size: 40, 20
+  orig: 40, 20
+  offset: 0, 0
+  index: -1
+arrow_green
+  rotate: false
+  xy: 471, 173
+  size: 40, 20
+  orig: 40, 20
+  offset: 0, 0
+  index: -1
+arrow_orange
+  rotate: false
+  xy: 463, 403
+  size: 40, 20
+  orig: 40, 20
+  offset: 0, 0
+  index: -1
+arrow_red
+  rotate: false
+  xy: 463, 427
+  size: 40, 20
+  orig: 40, 20
+  offset: 0, 0
+  index: -1
+arrow_yellow
+  rotate: false
+  xy: 463, 451
+  size: 40, 20
+  orig: 40, 20
+  offset: 0, 0
+  index: -1
+ball_blue_in
+  rotate: false
+  xy: 471, 69
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+ball_blue_in_fancy
+  rotate: false
+  xy: 1, 1
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+ball_blue_out
+  rotate: false
+  xy: 319, 221
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+ball_green_in
+  rotate: false
+  xy: 471, 95
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+ball_green_in_fancy
+  rotate: false
+  xy: 107, 47
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+ball_green_out
+  rotate: false
+  xy: 319, 259
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+ball_orange_in
+  rotate: false
+  xy: 471, 121
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+ball_orange_in_fancy
+  rotate: false
+  xy: 107, 93
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+ball_orange_out
+  rotate: false
+  xy: 319, 297
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+ball_red_in
+  rotate: false
+  xy: 471, 147
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+ball_red_in_fancy
+  rotate: false
+  xy: 213, 137
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+ball_red_out
+  rotate: false
+  xy: 425, 323
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+ball_yellow_in
+  rotate: false
+  xy: 463, 247
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+ball_yellow_in_fancy
+  rotate: false
+  xy: 213, 183
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+ball_yellow_out
+  rotate: false
+  xy: 425, 361
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_blue_in
+  rotate: false
+  xy: 319, 221
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_blue_locked_in
+  rotate: false
+  xy: 425, 399
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_blue_locked_out
+  rotate: false
+  xy: 463, 273
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_blue_out
+  rotate: false
+  xy: 471, 69
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_green_in
+  rotate: false
+  xy: 319, 259
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_green_locked_in
+  rotate: false
+  xy: 425, 437
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_green_locked_out
+  rotate: false
+  xy: 463, 299
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_green_out
+  rotate: false
+  xy: 471, 95
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_orange_in
+  rotate: false
+  xy: 319, 297
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_orange_locked_in
+  rotate: false
+  xy: 365, 1
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_orange_locked_out
+  rotate: false
+  xy: 463, 325
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_orange_out
+  rotate: false
+  xy: 471, 121
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_red_in
+  rotate: false
+  xy: 425, 323
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_red_locked_in
+  rotate: false
+  xy: 365, 39
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_red_locked_out
+  rotate: false
+  xy: 463, 351
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_red_out
+  rotate: false
+  xy: 471, 147
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_yellow_in
+  rotate: false
+  xy: 425, 361
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_yellow_locked_in
+  rotate: false
+  xy: 463, 209
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+goal_yellow_locked_out
+  rotate: false
+  xy: 463, 377
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+goal_yellow_out
+  rotate: false
+  xy: 463, 247
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+key_blue
+  rotate: false
+  xy: 425, 499
+  size: 16, 11
+  orig: 22, 22
+  offset: 3, 5
+  index: -1
+key_green
+  rotate: false
+  xy: 445, 499
+  size: 16, 11
+  orig: 22, 22
+  offset: 3, 5
+  index: -1
+key_orange
+  rotate: false
+  xy: 465, 499
+  size: 16, 11
+  orig: 22, 22
+  offset: 3, 5
+  index: -1
+key_red
+  rotate: false
+  xy: 485, 495
+  size: 16, 11
+  orig: 22, 22
+  offset: 3, 5
+  index: -1
+key_yellow
+  rotate: false
+  xy: 489, 247
+  size: 16, 11
+  orig: 22, 22
+  offset: 3, 5
+  index: -1
+spike
+  rotate: false
+  xy: 469, 475
+  size: 30, 16
+  orig: 30, 16
+  offset: 0, 0
+  index: -1
+wall_basic_1_hole
+  rotate: false
+  xy: 1, 47
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_1_line
+  rotate: false
+  xy: 47, 1
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_2_hole
+  rotate: false
+  xy: 1, 81
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_2_line
+  rotate: false
+  xy: 1, 115
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_4_hole
+  rotate: false
+  xy: 1, 149
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_4_line
+  rotate: false
+  xy: 1, 183
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_fixed_1_hole
+  rotate: false
+  xy: 1, 217
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_fixed_1_line
+  rotate: false
+  xy: 1, 251
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_fixed_2_hole
+  rotate: false
+  xy: 1, 285
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_fixed_2_line
+  rotate: false
+  xy: 1, 319
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_fixed_4_hole
+  rotate: false
+  xy: 1, 353
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_basic_fixed_4_line
+  rotate: false
+  xy: 1, 387
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_fixed_hole
+  rotate: false
+  xy: 1, 489
+  size: 102, 12
+  orig: 102, 30
+  offset: 0, 9
+  index: -1
+wall_fixed_line
+  rotate: false
+  xy: 47, 35
+  size: 102, 8
+  orig: 102, 30
+  offset: 0, 11
+  index: -1
+wall_reaction_1_hole
+  rotate: false
+  xy: 1, 421
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_reaction_1_line
+  rotate: false
+  xy: 1, 455
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_reaction_2_hole
+  rotate: false
+  xy: 107, 139
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_reaction_2_line
+  rotate: false
+  xy: 153, 1
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_reaction_4_hole
+  rotate: false
+  xy: 153, 35
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_reaction_4_line
+  rotate: false
+  xy: 153, 69
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_spinning_hole
+  rotate: false
+  xy: 153, 103
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_spinning_line
+  rotate: false
+  xy: 107, 173
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: -1
+wall_weak_basic_1_hole
+  rotate: false
+  xy: 107, 207
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 0
+wall_weak_basic_1_hole
+  rotate: false
+  xy: 107, 241
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 1
+wall_weak_basic_1_hole
+  rotate: false
+  xy: 107, 275
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 2
+wall_weak_basic_1_hole
+  rotate: false
+  xy: 107, 309
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 3
+wall_weak_basic_1_hole
+  rotate: false
+  xy: 107, 343
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 4
+wall_weak_basic_2_hole
+  rotate: false
+  xy: 107, 377
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 0
+wall_weak_basic_2_hole
+  rotate: false
+  xy: 107, 411
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 1
+wall_weak_basic_2_hole
+  rotate: false
+  xy: 107, 445
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 2
+wall_weak_basic_2_hole
+  rotate: false
+  xy: 107, 479
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 3
+wall_weak_basic_2_hole
+  rotate: false
+  xy: 213, 229
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 4
+wall_weak_basic_4_hole
+  rotate: false
+  xy: 259, 1
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 0
+wall_weak_basic_4_hole
+  rotate: false
+  xy: 259, 35
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 1
+wall_weak_basic_4_hole
+  rotate: false
+  xy: 259, 69
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 2
+wall_weak_basic_4_hole
+  rotate: false
+  xy: 259, 103
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 3
+wall_weak_basic_4_hole
+  rotate: false
+  xy: 259, 137
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 4
+wall_weak_fixed_hole
+  rotate: false
+  xy: 259, 205
+  size: 102, 12
+  orig: 102, 30
+  offset: 0, 9
+  index: 0
+wall_weak_fixed_hole
+  rotate: false
+  xy: 365, 145
+  size: 102, 12
+  orig: 102, 30
+  offset: 0, 9
+  index: 1
+wall_weak_fixed_hole
+  rotate: false
+  xy: 365, 161
+  size: 102, 12
+  orig: 102, 30
+  offset: 0, 9
+  index: 2
+wall_weak_fixed_hole
+  rotate: false
+  xy: 365, 177
+  size: 102, 12
+  orig: 102, 30
+  offset: 0, 9
+  index: 3
+wall_weak_fixed_hole
+  rotate: false
+  xy: 365, 193
+  size: 102, 12
+  orig: 102, 30
+  offset: 0, 9
+  index: 4
+wall_weak_reaction_1_hole
+  rotate: false
+  xy: 259, 171
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 0
+wall_weak_reaction_1_hole
+  rotate: false
+  xy: 213, 263
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 1
+wall_weak_reaction_1_hole
+  rotate: false
+  xy: 213, 297
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 2
+wall_weak_reaction_1_hole
+  rotate: false
+  xy: 213, 331
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 3
+wall_weak_reaction_1_hole
+  rotate: false
+  xy: 213, 365
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 4
+wall_weak_reaction_2_hole
+  rotate: false
+  xy: 213, 399
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 0
+wall_weak_reaction_2_hole
+  rotate: false
+  xy: 213, 433
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 1
+wall_weak_reaction_2_hole
+  rotate: false
+  xy: 213, 467
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 2
+wall_weak_reaction_2_hole
+  rotate: false
+  xy: 319, 335
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 3
+wall_weak_reaction_2_hole
+  rotate: false
+  xy: 357, 221
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 4
+wall_weak_reaction_4_hole
+  rotate: false
+  xy: 357, 255
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 0
+wall_weak_reaction_4_hole
+  rotate: false
+  xy: 357, 289
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 1
+wall_weak_reaction_4_hole
+  rotate: false
+  xy: 319, 369
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 2
+wall_weak_reaction_4_hole
+  rotate: false
+  xy: 319, 403
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 3
+wall_weak_reaction_4_hole
+  rotate: false
+  xy: 319, 437
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 4
+wall_weak_spinning_hole
+  rotate: false
+  xy: 319, 471
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 0
+wall_weak_spinning_hole
+  rotate: false
+  xy: 365, 77
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 1
+wall_weak_spinning_hole
+  rotate: false
+  xy: 403, 1
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 2
+wall_weak_spinning_hole
+  rotate: false
+  xy: 403, 35
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 3
+wall_weak_spinning_hole
+  rotate: false
+  xy: 365, 111
+  size: 102, 30
+  orig: 102, 30
+  offset: 0, 0
+  index: 4

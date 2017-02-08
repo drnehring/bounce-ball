@@ -12,6 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.david.bounceball.*;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * Created by David on 10/13/2016.
  */
@@ -19,7 +22,7 @@ public abstract class LevelScreen extends ScreenWithListener {
 
     private static final int LEVEL_BUTTONS_PER_LINE = 4;
 
-    int numberOfLevels = 0;
+    int numberOfLevels;
     protected int packNumber;
     protected int levelNumber;
     TextButton[] levelButtons;
@@ -44,15 +47,17 @@ public abstract class LevelScreen extends ScreenWithListener {
         Assets.command.remove();
         uiStage.addActor(Assets.command);
 
-        FileHandle levels = Gdx.files.internal("pack_" + packNumber + ".txt");
-        String[] splitData = levels.readString().split("\n");
-        numberOfLevels = splitData.length / Level.LINES_PER_LEVEL;
+        numberOfLevels = Assets.numberOfLevels();
+
         levelButtons = new TextButton[numberOfLevels];
+
         for (int i = 0; i < numberOfLevels; i++) {
-            levelButtons[i] = new TextButton("Level " + (i+1), uiskin);
+            levelButtons[i] = addButton("Level " + (i+1), uiskin);
             if (i % LEVEL_BUTTONS_PER_LINE == 0)
                 table.row().size(100).pad(10);
             table.add(levelButtons[i]);
+            if (!Assets.levelAvailable(i))
+                levelButtons[i].setColor(0, 0, 0, 1);
         }
     }
 
@@ -62,9 +67,9 @@ public abstract class LevelScreen extends ScreenWithListener {
         if (event instanceof ChangeListener.ChangeEvent) {
             Actor actor = event.getTarget();
             for (levelNumber = 0; levelNumber < numberOfLevels; levelNumber++) {
-                if (actor == levelButtons[levelNumber]) {
+                if (actor == levelButtons[levelNumber] && Assets.levelAvailable(levelNumber)) {
                     setNextScreen(0);
-                    break;
+                    return true;
                 }
             }
         }

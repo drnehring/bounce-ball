@@ -1,6 +1,7 @@
 package com.david.bounceball.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
@@ -11,6 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.david.bounceball.*;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * Created by David on 10/13/2016.
  */
@@ -18,7 +22,7 @@ public abstract class PackScreen extends ScreenWithListener {
 
     ScrollPane scrollPane;
     Table table;
-    int numberOfPacks = 0;
+    int numberOfPacks;
     TextButton[] packButtons;
     protected int packNumber;
 
@@ -29,14 +33,15 @@ public abstract class PackScreen extends ScreenWithListener {
         scrollPane = new ScrollPane(table, uiskin);
         scrollPane.setBounds(30, 360 + 10, 420, 120 + 20);
         uiStage.addActor(scrollPane);
-        while (Gdx.files.internal("pack_" + numberOfPacks + ".txt").exists()) {
-            numberOfPacks++;
-        }
+
+        numberOfPacks = Assets.numberOfPacks();
 
         packButtons = new TextButton[numberOfPacks];
         for (int i = 0; i < numberOfPacks; i++) {
-            packButtons[i] = new TextButton("Pack " + (i+1), uiskin);
+            packButtons[i] = addButton("Pack " + (i+1), uiskin);
             table.add(packButtons[i]).size(100, 100).pad(10);
+            if (!Assets.packAvailable(i))
+                packButtons[i].setColor(0, 0, 0, 1);
         }
     }
 
@@ -47,9 +52,10 @@ public abstract class PackScreen extends ScreenWithListener {
         if (event instanceof ChangeListener.ChangeEvent) {
             Actor actor = event.getTarget();
             for (packNumber = 0; packNumber < numberOfPacks; packNumber++) {
-                if (actor == packButtons[packNumber]) {
+                if (actor == packButtons[packNumber] && Assets.packAvailable(packNumber)) {
+                    Assets.loadPack(packNumber);
                     setNextScreen(0);
-                    break;
+                    return true;
                 }
             }
         }

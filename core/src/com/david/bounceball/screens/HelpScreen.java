@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.david.bounceball.Assets;
 import com.david.bounceball.ScreenWithListener;
 
 /**
@@ -27,9 +28,7 @@ public abstract class HelpScreen extends ScreenWithListener {
     public HelpScreen(int helpScreenNumber) {
         super();
         this.helpScreenNumber = helpScreenNumber;
-        forwardButton = new TextButton("Next", new Skin(Gdx.files.internal("data/uiskin.json")));
-        forwardButton.setBounds(480 - 100, 0 , 100, 100);
-        uiStage.addActor(forwardButton);
+        forwardButton = addButton(480 - 100, 0, 100, 100, "Next", Assets.uiskin);
         background = new TextureRegion(new Texture(Gdx.files.internal("help_screen_" + helpScreenNumber + ".png")), 320, 480);
         spriteBatch = new SpriteBatch(1);
     }
@@ -41,6 +40,7 @@ public abstract class HelpScreen extends ScreenWithListener {
             Actor actor = event.getTarget();
             if (actor == forwardButton) {
                 setNextScreen(0);
+                return true;
             }
         }
         return false;

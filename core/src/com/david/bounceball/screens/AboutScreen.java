@@ -33,6 +33,7 @@ public abstract class AboutScreen extends ScreenWithListener {
             InputEvent inputEvent = (InputEvent) event;
             if (inputEvent.getType() == InputEvent.Type.touchDown) {
                 setNextScreen(0);
+                return true;
             }
         }
         return false;

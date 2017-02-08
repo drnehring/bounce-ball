@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -25,6 +26,11 @@ import com.david.bounceball.Level;
 import com.david.bounceball.ScreenWithListener;
 import com.david.bounceball.Settings;
 
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 /**
  * Created by David on 9/26/2016.
  */
@@ -47,21 +53,14 @@ public abstract class GameScreen extends ScreenWithListener {
     Image background;
     TextureRegion grid;
 
+
     public GameScreen(int packNumber, int levelNumber) {
         InputMultiplexer inputMultiplexer;
-        Skin uiskin = Assets.uiskin;
-        back = new TextButton("Back", uiskin);
-        back.setBounds(0, 720, 120, 120);
-        uiStage.addActor(back);
-        previousLevel = new TextButton("Previous\nlevel", uiskin);
-        previousLevel.setBounds(0, 120, 120, 120);
-        uiStage.addActor(previousLevel);
-        restart = new TextButton("Restart", uiskin);
-        restart.setBounds(180, 120, 120, 120);
-        uiStage.addActor(restart);
-        nextLevel = new TextButton("Next\nlevel", uiskin);
-        nextLevel.setBounds(360, 120, 120, 120);
-        uiStage.addActor(nextLevel);
+        back = addButton(0, 720, 120, 120, "Back", Assets.uiskin);
+        previousLevel = addButton(0, 120, 120, 120, "Previous\nlevel", Assets.uiskin);
+        restart = addButton(180, 120, 120, 120, "Restart", Assets.uiskin);
+        nextLevel = addButton(360, 120, 120, 120, "Next\nlevel", Assets.uiskin);
+        setPreviousNextButtons();
 
         grid = new TextureRegion(new Texture(Gdx.files.internal("grid.png")));
 
@@ -80,6 +79,20 @@ public abstract class GameScreen extends ScreenWithListener {
         font = new BitmapFont();
         batch = new SpriteBatch(20);
 
+    }
+
+    private void setPreviousNextButtons() {
+        previousLevel.setVisible(levelNumber > 0);
+        if (levelNumber < Assets.numberOfLevels() - 1) {
+            nextLevel.setVisible(true);
+            if (Assets.levelAvailable(levelNumber + 1)) {
+                nextLevel.setColor(1, 1, 1, 1);
+            } else {
+                nextLevel.setColor(0, 0, 0, 1);
+            }
+        } else {
+            nextLevel.setVisible(false);
+        }
     }
 
     @Override
@@ -138,31 +151,47 @@ public abstract class GameScreen extends ScreenWithListener {
         if (event instanceof ChangeListener.ChangeEvent) {
             Actor actor = event.getTarget();
             if (actor == back) {
+                Assets.unloadPack();
                 setNextScreen(0);
+                return true;
             } else if (actor == previousLevel) {
-                loadLevel(packNumber, levelNumber - 1);
+                if (levelNumber > 0)
+                    loadLevel(packNumber, levelNumber - 1);
+                return true;
             } else if (actor == restart) {
                 loadLevel(packNumber, levelNumber);
+                return true;
             } else if (actor == nextLevel) {
-                loadLevel(packNumber, levelNumber + 1);
+                if (Assets.levelAvailable(levelNumber + 1))
+                    loadLevel(packNumber, levelNumber + 1);
+                return true;
             }
         }
         return false;
     }
 
     private void loadLevel(int packNumber, int levelNumber) {
-        Level newLevel = Level.Factory(packNumber, levelNumber, this);
-        if (newLevel != null) {
-            if (level != null)
-                level.remove();
-            level = newLevel;
-            gameStage.addActor(level);
-            this.levelNumber = levelNumber;
-            this.packNumber = packNumber;
-            Settings.lastLevelNumber = levelNumber;
-            Settings.lastPackNumber = packNumber;
-            grid.setU2((level.gridWidth * 10f + level.gridWidth - 1) / 109f);
-            grid.setV2((level.gridHeight * 10f + level.gridHeight - 1) / 109f);
+        Level newLevel = Level.Factory(levelNumber, this);
+        if (level != null)
+            level.remove();
+        level = newLevel;
+        gameStage.addActor(level);
+        this.levelNumber = levelNumber;
+        this.packNumber = packNumber;
+        Settings.lastLevelNumber = levelNumber;
+        Settings.lastPackNumber = packNumber;
+        grid.setU2((level.gridWidth * 10f + level.gridWidth - 1) / 109f);
+        grid.setV2((level.gridHeight * 10f + level.gridHeight - 1) / 109f);
+        setPreviousNextButtons();
+    }
+
+    public void levelWon() {
+        if (levelNumber < Assets.numberOfLevels() - 1) {
+            Assets.makeLevelAvailable(levelNumber + 1);
+            nextLevel.setColor(1, 1, 1, 1);
+        } else {
+            if (packNumber < Assets.numberOfPacks() - 1)
+                Assets.makePackAvailable(packNumber + 1);
         }
     }
 

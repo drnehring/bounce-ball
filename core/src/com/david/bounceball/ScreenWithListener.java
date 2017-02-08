@@ -8,9 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import java.util.ArrayList;
@@ -44,6 +47,31 @@ public abstract class ScreenWithListener implements Screen, EventListener {
         Assets.uiskin.getPatch("default-round-down").setBottomHeight(15);
     }
 
+    protected TextButton addButton(String text, Skin skin) {
+        TextButton button = new TextButton(text, skin);
+        uiStage.addActor(button);
+        button.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if (Settings.soundEnabled)
+                    Assets.goodClickDown.play();
+                return true;
+            }
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                if (Settings.soundEnabled)
+                    Assets.goodClickUp.play();
+            }
+        });
+        return button;
+    }
+
+    protected TextButton addButton(float x, float y, float width, float height, String text, Skin skin) {
+        TextButton button = addButton(text, skin);
+        button.setBounds(x, y, width, height);
+        return button;
+    }
+
     void setListener(ScreenListener listener) {
         this.listener = listener;
     }
@@ -54,7 +82,7 @@ public abstract class ScreenWithListener implements Screen, EventListener {
             if (inputEvent.getType() == InputEvent.Type.keyDown) {
                 if (inputEvent.getKeyCode() == Input.Keys.COMMA) {
                     Assets.command.setVisible(!Assets.command.isVisible());
-                    uiStage.setKeyboardFocus(Assets.command.isVisible()? Assets.command : null);
+                    uiStage.setKeyboardFocus(Assets.command.isVisible() ? Assets.command : null);
                 }
             }
         }

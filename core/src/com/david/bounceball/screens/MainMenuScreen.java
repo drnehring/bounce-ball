@@ -30,24 +30,19 @@ public abstract class MainMenuScreen extends ScreenWithListener {
 
     public MainMenuScreen() {
         super();
-        Skin uiskin = Assets.uiskin;
-        title = new Label("Bounce Ball", uiskin);
+
+
+        startButton = addButton(120, 480, 240, 48, "Start", Assets.uiskin);
+        helpButton = addButton(0, 120, 240, 48, "Help", Assets.uiskin);
+        settingsButton = addButton(144, 288, 192, 48, "Settings", Assets.uiskin);
+        aboutButton = addButton(240, 120, 240, 48, "About", Assets.uiskin);
+
+
+        title = new Label("Bounce Ball", Assets.uiskin);
         title.setBounds(72, 690, 336, 60);
         title.setAlignment(Align.center);
         title.setFontScale(5f, 5f);
-        startButton = new TextButton("Start", uiskin);
-        startButton.setBounds(120, 480, 240, 48);
-        helpButton = new TextButton("Help", uiskin);
-        helpButton.setBounds(0, 120, 240, 48);
-        settingsButton = new TextButton("Settings", uiskin);
-        settingsButton.setBounds(144, 288, 192, 48);
-        aboutButton = new TextButton("About", uiskin);
-        aboutButton.setBounds(240, 120, 240, 48);
         uiStage.addActor(title);
-        uiStage.addActor(startButton);
-        uiStage.addActor(helpButton);
-        uiStage.addActor(settingsButton);
-        uiStage.addActor(aboutButton);
     }
 
     @Override
@@ -94,12 +89,16 @@ public abstract class MainMenuScreen extends ScreenWithListener {
             Actor actor = event.getTarget();
             if (actor == startButton) {
                 setNextScreen(PACK_SCREEN);
+                return true;
             } else if (actor == settingsButton) {
                 setNextScreen(SETTINGS_SCREEN);
+                return true;
             }else if (actor == helpButton) {
                 setNextScreen(HELP_SCREEN);
+                return true;
             } else if (actor == aboutButton) {
                 setNextScreen(ABOUT_SCREEN);
+                return true;
             }
         }
         return false;

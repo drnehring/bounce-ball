@@ -1,12 +1,15 @@
 package com.david.bounceball;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.david.bounceball.screens.GameScreen;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -28,6 +31,16 @@ public class Assets {
 
     //The altas containing all the sprites
     private static TextureAtlas textureAtlas = new TextureAtlas(Gdx.files.internal("game_elements.txt"));
+
+    private static int numberOfPacks;
+    private static boolean[] packAvailable;
+    private static int packNumber = -1;
+    private static String[] levelsDataSplit = null;
+    private static int numberOfLevels = -1;
+    private static boolean[] levelAvailable = null;
+
+    public static Sound goodClickDown = Gdx.audio.newSound(Gdx.files.internal("l_down_click.wav"));
+    public static Sound goodClickUp = Gdx.audio.newSound(Gdx.files.internal("l_up_click.wav"));
 
     public static Sprite getSprite(String spriteName) {
         return textureAtlas.createSprite(spriteName);
@@ -214,6 +227,121 @@ public class Assets {
 
     public static String getSpikeStyle() {
         return spikeStyle;
+    }
+
+    public static void loadPackData() {
+        while (Gdx.files.internal("pack_" + numberOfPacks + ".txt").exists()) {
+            numberOfPacks++;
+        }
+        packAvailable = new boolean[numberOfPacks];
+
+        InputStream stream;
+        for (int i = 0; i < numberOfPacks; i++) {
+            stream = Gdx.files.internal("pack_" + i + ".txt").read();
+            int packAvailableAsAsciiInt = -1;
+            try {
+                packAvailableAsAsciiInt = stream.read();
+            } catch (IOException ex) {
+                //Shouldn't happen
+            }
+            if (packAvailableAsAsciiInt == 48) { //0
+                packAvailable[i] = false;
+            } else if (packAvailableAsAsciiInt == 49) { //1
+                packAvailable[i] = true;
+            } else {
+                //Shouldn't happen
+                packAvailable[i] = false;
+            }
+        }
+    }
+
+    public static int numberOfPacks() {
+        return numberOfPacks;
+    }
+
+    public static boolean packAvailable(int packNumber) {
+        return packAvailable[packNumber];
+    }
+
+    public static void loadPack(int packNumber) {
+        Assets.packNumber = packNumber;
+        FileHandle handle = Gdx.files.internal("pack_" + packNumber + ".txt");
+        levelsDataSplit = handle.readString().split("\r\n");
+        numberOfLevels = (levelsDataSplit.length - 1) / (Level.LINES_PER_LEVEL + 1);
+        levelAvailable = new boolean[numberOfLevels];
+        for (int i = 0; i < numberOfLevels; i++) {
+            if (levelsDataSplit[1 + i * (Level.LINES_PER_LEVEL + 1)].equals("0")) {
+                levelAvailable[i] = false;
+            } else if (levelsDataSplit[1 + i * (Level.LINES_PER_LEVEL + 1)].equals("1")) {
+                levelAvailable[i] = true;
+            } else {
+                //Shouldn't happen
+                levelAvailable[i] = false;
+            }
+        }
+    }
+
+    public static int numberOfLevels() {
+        return numberOfLevels;
+    }
+
+    public static boolean levelAvailable(int levelNumber) {
+        return levelAvailable[levelNumber];
+    }
+
+    public static String[] levelDataSplit(int levelNumber) {
+        String[] levelDataSplit = new String[Level.LINES_PER_LEVEL];
+        for (int i = 0; i < Level.LINES_PER_LEVEL; i++)
+            levelDataSplit[i] = levelsDataSplit[2 + levelNumber * (Level.LINES_PER_LEVEL + 1) + i];
+        return levelDataSplit;
+    }
+
+    public static void unloadPack() {
+        FileHandle handle = Gdx.files.local("pack_" + packNumber + ".txt");
+        handle.writeString(levelsDataSplit[0] + "\r\n", false);
+        for (int i = 1; i < levelsDataSplit.length; i++)
+            handle.writeString(levelsDataSplit[i] + "\r\n", true);
+        packNumber = -1;
+        numberOfLevels = -1;
+        levelsDataSplit = null;
+        levelAvailable = null;
+    }
+
+    public static void makePackAvailable(int packNumber) {
+        int packNumberTemp = Assets.packNumber;
+        if (packNumberTemp != -1)
+            unloadPack();
+        loadPack(packNumber);
+        levelsDataSplit[0] = "1";
+        packAvailable[packNumber] = true;
+        unloadPack();
+        if (packNumberTemp != - 1)
+            loadPack(packNumberTemp);
+    }
+
+    public static void makeLevelAvailable(int levelNumber) {
+        levelAvailable[levelNumber] = true;
+        levelsDataSplit[1 + levelNumber * (Level.LINES_PER_LEVEL + 1)] = "1";
+    }
+
+    public static void resetProgress() {
+        loadPack(0);
+        levelsDataSplit[0] = "1";
+        levelsDataSplit[1] = "1";
+        packAvailable[0] = true;
+        for (int j = 1; j < numberOfLevels; j++)
+            levelsDataSplit[1 + j * (Level.LINES_PER_LEVEL + 1)] = "0";
+        unloadPack();
+
+        for (int i = 1; i < numberOfPacks; i++) {
+            loadPack(i);
+            levelsDataSplit[0] = "0";
+            levelsDataSplit[1] = "1";
+            packAvailable[i] = false;
+            for (int j = 1; j < numberOfLevels; j++)
+                levelsDataSplit[1 + j * (Level.LINES_PER_LEVEL + 1)] = "0";
+            unloadPack();
+        }
     }
 
 }

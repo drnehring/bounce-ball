@@ -36,18 +36,9 @@ public class Level extends Actor {
         LOST
     }
 
-    public static Level Factory(int packNumber, int levelNumber, GameScreen gameScreen) {
+    public static Level Factory(int levelNumber, GameScreen gameScreen) {
         Vector2 position;
-        if (packNumber < 0 || levelNumber < 0)
-            return null;
-        FileHandle levels = Gdx.files.internal("pack_" + packNumber + ".txt");
-        String[] splitData = levels.readString().split("\n");
-        if (levelNumber * LINES_PER_LEVEL >= splitData.length)
-            return null;
-        String[] levelData = new String[LINES_PER_LEVEL];
-        for (int i = 0; i < LINES_PER_LEVEL; i++) {
-            levelData[i] = splitData[levelNumber * LINES_PER_LEVEL + i];
-        }
+        String[] levelData = Assets.levelDataSplit(levelNumber);
 
         int gridWidth = Integer.parseInt(levelData[0].substring(0, 2));
         int gridHeight = Integer.parseInt(levelData[0].substring(3, 5));
@@ -59,7 +50,7 @@ public class Level extends Actor {
         List<Ball> balls = new ArrayList<Ball>();
         List<Goal> goals = new ArrayList<Goal>();
 
-        String[] split = levelData[1].split("[,\r]");
+        String[] split = levelData[1].split(",");
         //Goals instantiated first because Balls and Keys require them
         for (int i = 0; i < split.length; i++) {
             Goal goal = Goal.Factory(position.x, position.y, split[i], i);
@@ -67,17 +58,19 @@ public class Level extends Actor {
             grid.add(goal);
         }
 
-        split = levelData[2].split("[,\r]");
+        split = levelData[2].split(",");
         for (int i = 0; i < split.length; i++) {
             Ball ball = Ball.Factory(position.x, position.y, split[i], goals);
             balls.add(ball);
             grid.add(ball);
         }
 
-        split = levelData[3].split("[,\r]");
-        for (int i = 0; i < split.length; i++) {
-            Wall wall = Wall.Factory(position.x, position.y, split[i]);
-            grid.add(wall);
+        if (!levelData[3].equals("_")) {
+            split = levelData[3].split(",");
+            for (int i = 0; i < split.length; i++) {
+                Wall wall = Wall.Factory(position.x, position.y, split[i]);
+                grid.add(wall);
+            }
         }
 
         Wall.makeLinks(); /*
@@ -85,16 +78,20 @@ public class Level extends Actor {
                             all walls have been instantiated
                             */
 
-        split = levelData[4].split("[,\r]");
-        for (int i = 0; i < split.length; i++) {
-            Key key = Key.Factory(position.x, position.y, split[i], goals);
-            grid.add(key);
+        if (!levelData[4].equals("_")) {
+            split = levelData[4].split(",");
+            for (int i = 0; i < split.length; i++) {
+                Key key = Key.Factory(position.x, position.y, split[i], goals);
+                grid.add(key);
+            }
         }
 
-        split = levelData[5].split("[,\r]");
-        for (int i = 0; i < split.length; i++) {
-            SpikeBall spikeBall = SpikeBall.Factory(position.x, position.y, split[i]);
-            grid.add(spikeBall);
+        if (!levelData[5].equals("_")) {
+            split = levelData[5].split(",");
+            for (int i = 0; i < split.length; i++) {
+                SpikeBall spikeBall = SpikeBall.Factory(position.x, position.y, split[i]);
+                grid.add(spikeBall);
+            }
         }
 
         return new Level(position.x, position.y, gridWidth, gridHeight, gameScreen, grid);
@@ -148,6 +145,7 @@ public class Level extends Actor {
         super.fire(event);
         if (event instanceof InputEvent) {
             gameScreen.levelTouched((InputEvent) event);
+            return true;
         }
         return false;
     }
@@ -259,6 +257,7 @@ public class Level extends Actor {
                 return;
         }
         state = States.WON;
+        gameScreen.levelWon();
     }
 
     public BounceBallGrid getGrid() {

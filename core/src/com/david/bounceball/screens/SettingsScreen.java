@@ -15,20 +15,15 @@ import com.david.bounceball.*;
 public abstract class SettingsScreen extends ScreenWithListener {
 
     TextButton soundEnabledButton;
+    TextButton resetProgressButton;
     TextButton backButton;
 
 
     public SettingsScreen() {
         super();
-        Skin uiskin = Assets.uiskin;
-        soundEnabledButton = new TextButton("Sound enabled: " + Settings.soundEnabled, uiskin);
-        soundEnabledButton.setPosition(0,840 - 100);
-        soundEnabledButton.setSize(100, 100);
-        backButton = new TextButton("Back", new Skin(Gdx.files.internal("data/uiskin.json")));
-        backButton.setPosition(0, soundEnabledButton.getY() - 100);
-        backButton.setSize(100, 100);
-        uiStage.addActor(soundEnabledButton);
-        uiStage.addActor(backButton);
+        soundEnabledButton = addButton(120, 480, 240, 48, "Sound enabled: " + Settings.soundEnabled, Assets.uiskin);
+        resetProgressButton = addButton(120, 360, 240, 48, "Reset progress", Assets.uiskin);
+        backButton = addButton(0, 720, 120, 120, "Back", Assets.uiskin);
     }
 
 
@@ -39,7 +34,7 @@ public abstract class SettingsScreen extends ScreenWithListener {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 0, 1, 1f);
+        Gdx.gl.glClearColor(0.15f, 0, 0.199f, 0.5f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         uiStage.act();
         uiStage.draw();
@@ -78,8 +73,13 @@ public abstract class SettingsScreen extends ScreenWithListener {
             if (actor == soundEnabledButton) {
                 Settings.soundEnabled = !Settings.soundEnabled;
                 soundEnabledButton.setText("Sound enabled: " + Settings.soundEnabled);
+                return true;
+            } else if (actor == resetProgressButton) {
+                Assets.resetProgress();
+                return true;
             } else if (actor == backButton) {
                 setNextScreen(0);
+                return true;
             }
         }
         return false;

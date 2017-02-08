@@ -62,3 +62,6 @@ build/
 
 ## OS Specific
 .DS_Store
+
+## Don't need libgdx's assets anymore
+android/assets/data

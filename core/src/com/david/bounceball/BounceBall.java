@@ -20,6 +20,7 @@ public class BounceBall extends ApplicationAdapter implements ScreenListener {
 		screen = initializer.getScreen();
 		screen.setListener(this);
 		screen.show();
+		Assets.loadPackData();
 		logger = new FPSLogger();
 	}
 
